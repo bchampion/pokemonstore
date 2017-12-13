@@ -10,7 +10,7 @@ import {pokemonData} from '../data/data';
 export class PokemonCardComponent implements OnInit {
 
   @Input()
-  pokemon: Pokemon;
+  pokemon: Pokemon = pokemonData[0];
 
   constructor() { }
 
