@@ -1,8 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { PokemonListComponent } from './pokemon-list.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {PokemonListComponent} from './pokemon-list.component';
 import {PokemonCardComponent} from '../pokemon-card/pokemon-card.component';
 import {pokemonData} from '../data/data';
 import {Pokemon} from '../shared/pokemon';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('PokemonListComponent', () => {
   let component: PokemonListComponent;
@@ -16,6 +17,9 @@ describe('PokemonListComponent', () => {
       declarations: [
         PokemonListComponent,
         PokemonCardComponent
+      ],
+      imports: [
+        RouterTestingModule
       ]
     })
     .compileComponents();

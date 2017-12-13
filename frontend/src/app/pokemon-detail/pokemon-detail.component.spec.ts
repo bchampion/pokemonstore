@@ -1,7 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {PokemonDetailComponent} from './pokemon-detail.component';
 import {pokemonData} from "../data/data";
 import {TitleCasePipe} from "@angular/common";
+import {RouterTestingModule} from "@angular/router/testing";
+import {KeyCodes} from "../shared/key-codes";
+import {UrisUtils} from "../shared/utils/uris-utils";
 
 describe('PokemonDetailComponent', () => {
   let component: PokemonDetailComponent;
@@ -11,7 +14,8 @@ describe('PokemonDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PokemonDetailComponent ]
+      declarations: [ PokemonDetailComponent ],
+      imports: [ RouterTestingModule ]
     })
       .compileComponents();
   }));
@@ -19,6 +23,8 @@ describe('PokemonDetailComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PokemonDetailComponent);
     component = fixture.componentInstance;
+    component.index = 0;
+    component.pokemon = pokemonData[0];
     fixture.detectChanges();
     element = fixture.nativeElement;
   });
@@ -74,10 +80,35 @@ describe('PokemonDetailComponent', () => {
       expect(typeElement.innerText).toBe(pokemon.types[index]);
     });
   });
+  it( 'should navigate to next pokemon when clicking on right arrow', () => {
+    pokemon = changePokemon(component, fixture, 15);
+    let spy = spyOn((<any>component).router, 'navigate');
+    component.keyEvent(KeyCodes.RIGHT_ARROW);
+    expect(spy).toHaveBeenCalledWith(UrisUtils.getDetailLink(pokemonData[16].id));
+
+    pokemon = changePokemon(component, fixture, 150);
+    component.keyEvent(KeyCodes.RIGHT_ARROW);
+    expect(spy).toHaveBeenCalledWith(UrisUtils.getDetailLink(pokemonData[0].id));
+  });
+  it( 'should navigate to previous pokemon when clicking on left arrow', () => {
+    pokemon = changePokemon(component, fixture, 15);
+    const spy = spyOn((<any>component).router, 'navigate');
+    component.keyEvent(KeyCodes.LEFT_ARROW);
+    expect(spy).toHaveBeenCalledWith(UrisUtils.getDetailLink(pokemonData[14].id));
+
+    pokemon = changePokemon(component, fixture, 0);
+    component.keyEvent(KeyCodes.LEFT_ARROW);
+    expect(spy).toHaveBeenCalledWith(UrisUtils.getDetailLink(pokemonData[150].id));
+  });
+  it( 'should navigate to pokemon list when clicking on back button', () => {
+    const spy = spyOn((<any>component).router, 'navigate');
+    component.back();
+    expect(spy).toHaveBeenCalledWith(UrisUtils.getListLink());
+  });
 });
 
-function changePokemon(component, fixture) {
-  const index = Math.floor(Math.random() * pokemonData.length);
+function changePokemon(component, fixture, i?) {
+  const index = i !== undefined ? i : Math.floor(Math.random() * pokemonData.length);
   component.index = index;
   component.pokemon = pokemonData[index];
   fixture.detectChanges();

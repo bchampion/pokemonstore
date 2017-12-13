@@ -1,8 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PokemonCardComponent } from './pokemon-card.component';
+import {PokemonCardComponent} from './pokemon-card.component';
 import {Component, ViewChild} from '@angular/core';
 import {pokemonData} from '../data/data';
+import {RouterTestingModule} from "@angular/router/testing";
 
 describe('PokemonCardComponent', () => {
   let testHostComponent: TestHostComponent;
@@ -15,6 +16,9 @@ describe('PokemonCardComponent', () => {
       declarations: [
         TestHostComponent,
         PokemonCardComponent
+      ],
+      imports: [
+        RouterTestingModule
       ]
     })
     .compileComponents();

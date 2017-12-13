@@ -1,4 +1,4 @@
-<a class="card--media">
+<a [routerLink]="link" class="card--media">
   <i [class]="'sprite sprite-' + pokemon.id"></i>
   <div class="card--media__content">
     {{pokemon.name}} <span class="float-right">#{{pokemon.id}}</span>

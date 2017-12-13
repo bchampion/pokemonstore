@@ -2,6 +2,8 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {Pokemon} from '../shared/pokemon';
 import {pokemonData} from '../data/data';
 import {KeyCodes} from '../shared/key-codes';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UrisUtils} from '../shared/utils/uris-utils';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -12,15 +14,18 @@ export class PokemonDetailComponent implements OnInit {
 
   pokemon: Pokemon;
 
-  index = 0;
+  index: number;
 
-  constructor() { }
-
-  ngOnInit() {
-   this.retrievePokemon();
+  constructor(private route: ActivatedRoute,
+              private router: Router) {
+    this.route.params.subscribe(params => this.handleParams(+params['id']));
   }
 
-  retrievePokemon() {
+  ngOnInit() {
+  }
+
+  private handleParams(id: number) {
+    this.index = pokemonData.findIndex(pokemon => pokemon.id === id);
     this.pokemon = pokemonData[this.index];
   }
 
@@ -35,16 +40,20 @@ export class PokemonDetailComponent implements OnInit {
   }
 
   private previous() {
-    if (this.index > 0) {
-      this.index--;
-    }
-    this.retrievePokemon();
+    let previousIndex = this.index - 1;
+    if (previousIndex < 0) { previousIndex = pokemonData.length - 1; }
+    this.router.navigate(UrisUtils.getDetailLink(pokemonData[previousIndex].id));
   }
 
   private next() {
-    if (this.index < pokemonData.length - 1) {
-      this.index++;
+    let nextIndex = this.index + 1;
+    if (nextIndex > pokemonData.length - 1) {
+      nextIndex = 0;
     }
-    this.retrievePokemon();
+    this.router.navigate(UrisUtils.getDetailLink(pokemonData[nextIndex].id));
+  }
+
+  back() {
+    this.router.navigate(UrisUtils.getListLink());
   }
 }

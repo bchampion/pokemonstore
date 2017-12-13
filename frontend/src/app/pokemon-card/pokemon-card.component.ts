@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Pokemon} from '../shared/pokemon';
-import {pokemonData} from '../data/data';
+import {UrisUtils} from "../shared/utils/uris-utils";
 
 @Component({
   selector: 'app-pokemon-card',
@@ -10,11 +10,14 @@ import {pokemonData} from '../data/data';
 export class PokemonCardComponent implements OnInit {
 
   @Input()
-  pokemon: Pokemon = pokemonData[0];
+  pokemon: Pokemon;
+
+  link: any[];
 
   constructor() { }
 
   ngOnInit() {
+    this.link = UrisUtils.getDetailLink(this.pokemon.id);
   }
 
 }
