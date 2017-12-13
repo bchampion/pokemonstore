@@ -95,12 +95,3 @@ h1 {
   max-width: 720px;
   margin: auto;
 }
-
-.return-button {
-  background-color: #EF5350;
-  border-style: none;
-  display: inline-block;
-  padding: 4px 10px;
-  color: white;
-  margin-right: 4px;
-}

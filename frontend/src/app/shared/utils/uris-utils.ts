@@ -3,7 +3,7 @@ import {URIS} from '../uris';
 export class UrisUtils {
 
   public static getDetailLink(id: number): any[] {
-    return ['/' + URIS.POKEMON_DETAIL.replace('/:id', ''), id];
+    return [id];
   }
 
   public static getListLink(): any[] {

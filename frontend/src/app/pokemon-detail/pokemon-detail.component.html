@@ -1,19 +1,18 @@
-<button class="return-button" (click)="back()">◄ Back</button>
-<div *ngIf="pokemon" class="pokemon-detail">
-  <div class="row">
-    <div class="col-sm-5 col-md-4">
-      <i [class]="'sprite sprite-' + pokemon.id"></i>
-    </div>
-    <div class="col-sm-7 col-md-8">
-      <h1>{{pokemon.name | titlecase }} #{{pokemon.id}}</h1>
-      <div *ngFor="let type of pokemon.types" class="type" [ngClass]="type">
-        {{type}}
+  <div *ngIf="pokemon" class="pokemon-detail">
+    <div class="row">
+      <div class="col-sm-5 col-md-4">
+        <i [class]="'sprite sprite-' + pokemon.id"></i>
       </div>
-      <p class="height-and-weight">
-        <strong>Height:</strong> {{pokemon.height / 10}} m
-        <strong>Weight:</strong> {{pokemon.weight / 10}} kg
-      </p>
-      <p class="description">{{pokemon.description}}</p>
+      <div class="col-sm-7 col-md-8">
+        <h1>{{pokemon.name | titlecase }} #{{pokemon.id}}</h1>
+        <div *ngFor="let type of pokemon.types" class="type" [ngClass]="type">
+          {{type}}
+        </div>
+        <p class="height-and-weight">
+          <strong>Height:</strong> {{pokemon.height / 10}} m
+          <strong>Weight:</strong> {{pokemon.weight / 10}} kg
+        </p>
+        <p class="description">{{pokemon.description}}</p>
+      </div>
     </div>
   </div>
-</div>

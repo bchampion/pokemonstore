@@ -3,8 +3,9 @@ import {PokemonDetailComponent} from './pokemon-detail.component';
 import {pokemonData} from "../data/data";
 import {TitleCasePipe} from "@angular/common";
 import {RouterTestingModule} from "@angular/router/testing";
-import {KeyCodes} from "../shared/key-codes";
 import {UrisUtils} from "../shared/utils/uris-utils";
+import {ModalComponent} from "../shared/modal/modal.component";
+import Spy = jasmine.Spy;
 
 describe('PokemonDetailComponent', () => {
   let component: PokemonDetailComponent;
@@ -14,7 +15,10 @@ describe('PokemonDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PokemonDetailComponent ],
+      declarations: [
+        PokemonDetailComponent,
+        ModalComponent
+      ],
       imports: [ RouterTestingModule ]
     })
       .compileComponents();
@@ -80,29 +84,36 @@ describe('PokemonDetailComponent', () => {
       expect(typeElement.innerText).toBe(pokemon.types[index]);
     });
   });
-  it( 'should navigate to next pokemon when clicking on right arrow', () => {
+  it( 'should navigate to next pokemon when method next is called', () => {
+    let spy: Spy = spyOn((<any>component).router, 'navigate');
+
     pokemon = changePokemon(component, fixture, 15);
-    let spy = spyOn((<any>component).router, 'navigate');
-    component.keyEvent(KeyCodes.RIGHT_ARROW);
-    expect(spy).toHaveBeenCalledWith(UrisUtils.getDetailLink(pokemonData[16].id));
+    component.next();
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy.calls.mostRecent().args).toContain(UrisUtils.getDetailLink(pokemonData[16].id));
 
     pokemon = changePokemon(component, fixture, 150);
-    component.keyEvent(KeyCodes.RIGHT_ARROW);
-    expect(spy).toHaveBeenCalledWith(UrisUtils.getDetailLink(pokemonData[0].id));
+    component.next();
+    expect(spy).toHaveBeenCalledTimes(2);
+    expect(spy.calls.mostRecent().args).toContain(UrisUtils.getDetailLink(pokemonData[0].id));
+
   });
-  it( 'should navigate to previous pokemon when clicking on left arrow', () => {
-    pokemon = changePokemon(component, fixture, 15);
+  it( 'should navigate to previous pokemon when method prevous is called', () => {
     const spy = spyOn((<any>component).router, 'navigate');
-    component.keyEvent(KeyCodes.LEFT_ARROW);
-    expect(spy).toHaveBeenCalledWith(UrisUtils.getDetailLink(pokemonData[14].id));
+
+    pokemon = changePokemon(component, fixture, 15);
+    component.previous();
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy.calls.mostRecent().args).toContain(UrisUtils.getDetailLink(pokemonData[14].id));
 
     pokemon = changePokemon(component, fixture, 0);
-    component.keyEvent(KeyCodes.LEFT_ARROW);
-    expect(spy).toHaveBeenCalledWith(UrisUtils.getDetailLink(pokemonData[150].id));
+    component.previous();
+    expect(spy).toHaveBeenCalledTimes(2);
+    expect(spy.calls.mostRecent().args).toContain(UrisUtils.getDetailLink(pokemonData[150].id));
   });
   it( 'should navigate to pokemon list when clicking on back button', () => {
     const spy = spyOn((<any>component).router, 'navigate');
-    component.back();
+    component.close();
     expect(spy).toHaveBeenCalledWith(UrisUtils.getListLink());
   });
 });

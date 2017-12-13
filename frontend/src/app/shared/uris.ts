@@ -1,4 +1,4 @@
 export enum URIS {
   POKEMON_LIST = 'pokemons',
-  POKEMON_DETAIL = 'pokemons/:id',
+  POKEMON_DETAIL = ':id',
 }

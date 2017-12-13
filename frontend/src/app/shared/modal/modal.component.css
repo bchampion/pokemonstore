@@ -1,0 +1,89 @@
+
+.pok-modal-background {
+  display: none;
+}
+
+@media (min-width: 620px) {
+  .pok-modal-background {
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(0,0,0, 0.4);
+  }
+}
+
+.pok-modal {
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+  will-change: scroll-position;
+}
+
+.pok-modal__inner {
+  min-height: 110vh;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  background-color: #ededed;
+  z-index: 2;
+  position: relative;
+  overflow: visible;
+}
+
+@media (min-width: 720px) {
+  .pok-modal__inner {
+    width: 92%;
+    margin: 30px auto;
+    min-height: initial;
+  }
+}
+
+@media (min-width: 1024px) {
+  .pok-modal__inner {
+    width: 88%;
+  }
+}
+
+.pok-modal__header {
+   background-color: #EF5350;
+}
+
+.pok-modal__view {
+   padding: 12px;
+}
+
+.pok-modal__btn {
+  text-decoration: none;
+  display: block;
+  float: right;
+  padding: 14px 18px 12px 18px;
+  font-size: 1.2em;
+  color: #fff;
+  border: 0;
+  background: transparent;
+  width: 55px;
+}
+
+.pok-modal__btn img {
+  width: 20px;
+}
+
+.pok-modal__btn:hover {
+  background-color: #f27875;
+}
+
+@media (max-width: 1024px) {
+  .expand-btn {
+    display: none;
+  }
+}
