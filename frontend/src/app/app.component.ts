@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {Pokemon} from './shared/pokemon';
+import {pokemonData} from './data/data';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  pokemon: Pokemon = pokemonData[0];
 }
