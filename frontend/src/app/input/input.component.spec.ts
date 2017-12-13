@@ -2,9 +2,9 @@ import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/t
 
 import {InputComponent} from './input.component';
 import {Component, DebugElement, ViewChild} from '@angular/core';
+import {InputDirective} from './input.directive';
 import {FormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {InputDirective} from './input.directive';
 
 describe('InputComponent', () => {
   let fixture: ComponentFixture<TestHostComponent>;

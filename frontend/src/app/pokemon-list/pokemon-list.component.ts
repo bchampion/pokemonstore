@@ -11,7 +11,9 @@ export class PokemonListComponent implements OnInit {
 
   pokemons: Pokemon[] = pokemonData;
 
-  searchTerm: string;
+  set searchTerm(term) {
+    this.pokemons = pokemonData.filter(pokemon => !term || pokemon.name.toLowerCase().indexOf(term.toLowerCase()) >= 0);
+  }
 
   constructor() { }
 

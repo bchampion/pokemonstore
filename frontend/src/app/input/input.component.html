@@ -1,6 +1,6 @@
 <div class="pok-input-component-container">
   <div class="pok-field-container">
-    <input>
+    <input appInput [(ngModel)]="value" (blur)="onBlur()">
     <span class="pok-placeholder">
       <label>Search</label>
     </span>
