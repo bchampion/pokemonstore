@@ -4,6 +4,9 @@ import {PokemonCardComponent} from '../pokemon-card/pokemon-card.component';
 import {pokemonData} from '../data/data';
 import {Pokemon} from '../shared/pokemon';
 import {RouterTestingModule} from '@angular/router/testing';
+import {InputComponent} from "../input/input.component";
+import {FormsModule} from "@angular/forms";
+import {InputDirective} from "../input/input.directive";
 
 describe('PokemonListComponent', () => {
   let component: PokemonListComponent;
@@ -16,10 +19,13 @@ describe('PokemonListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         PokemonListComponent,
-        PokemonCardComponent
+        PokemonCardComponent,
+        InputComponent,
+        InputDirective
       ],
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        FormsModule
       ]
     })
     .compileComponents();
@@ -68,7 +74,36 @@ describe('PokemonListComponent', () => {
         .toContain('sprite-' + randomPokemon.id, 'Wrong image is displayed');
       expect(randomCard.querySelector('div').innerText)
         .toBe(`${randomPokemon.name} #${randomPokemon.id}`, 'Name and id are not displayed well');
+    }
+  });
 
+  it('setting no search term should display all pokemons', () => {
+    component.searchTerm = '';
+    fixture.detectChanges();
+    const allCards = element.querySelectorAll('.card--media');
+    expect(allCards).toBeTruthy(`no card is displayed`);
+    if (allCards) {
+      expect(allCards.length).toBe(pokemonData.length);
+    }
+  });
+
+  it('setting search term should display only matching pokemons', () => {
+    component.searchTerm = 'bl';
+    fixture.detectChanges();
+    let allCards = element.querySelectorAll('.card--media');
+    expect(allCards).toBeTruthy(`no card is displayed`);
+    if (allCards) {
+      expect(allCards.length).toBe(2);
+      expect(allCards[0].querySelector('div').innerText).toContain('blastoise');
+      expect(allCards[1].querySelector('div').innerText).toContain('clefable');
+    }
+    component.searchTerm = 'bla';
+    fixture.detectChanges();
+    allCards = element.querySelectorAll('.card--media');
+    expect(allCards).toBeTruthy(`no card is displayed`);
+    if (allCards) {
+      expect(allCards.length).toBe(1);
+      expect(allCards[0].querySelector('div').innerText).toContain('blastoise');
     }
   });
 

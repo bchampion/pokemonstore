@@ -1,9 +1,11 @@
 import {browser, by, element, ElementFinder} from 'protractor';
 import {promise} from 'selenium-webdriver';
-import Promise = promise.Promise;
 import 'rxjs/add/operator/map';
 import {URIS} from '../src/app/shared/uris';
-import {pokemonData} from "../src/app/data/data";
+import {pokemonData} from '../src/app/data/data';
+import Promise = promise.Promise;
+
+let fs = require('fs');
 
 export class AppPage {
 
@@ -71,6 +73,9 @@ export class AppPage {
   clickOnBackButton() {
     element(by.css('button.return-button')).click();
   }
-}
 
-var fs = require('fs');
+  typeOnInputField(text: string) {
+    element(by.css('input')).sendKeys(text || '');
+  }
+
+}

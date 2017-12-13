@@ -1,4 +1,4 @@
-import { AppPage } from './app.po';
+import {AppPage} from './app.po';
 import {pokemonData} from '../src/app/data/data';
 import {TitleCasePipe} from '@angular/common';
 import {browser, protractor} from 'protractor';
@@ -58,6 +58,22 @@ describe('pokemonstore-ui App', () => {
     page.clickOnBackButton();
     expect(browser.getCurrentUrl()).toBe(browser.baseUrl + AppPage.getListLink());
     AppPage.saveScreenShot();
+  });
+
+  it('should filter pokemon list when typing search term', () => {
+    const termsSerie = [
+      {term: 'b', nbElts: 20},
+      {term: 'l', nbElts: 2},
+      {term: 'a', nbElts: 1},
+      {term: protractor.Key.BACK_SPACE, nbElts: 2},
+      {term: protractor.Key.BACK_SPACE, nbElts: 20},
+      {term: protractor.Key.BACK_SPACE, nbElts: pokemonData.length},
+    ];
+    termsSerie.forEach(termObj => {
+      page.typeOnInputField(termObj.term);
+      expect(page.getPokemonCardNumber()).toBe(termObj.nbElts);
+      AppPage.saveScreenShot();
+    });
   });
 
 });

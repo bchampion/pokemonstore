@@ -1,0 +1,86 @@
+app-input {
+  display: block;
+}
+
+app-input .pok-input-component-container {
+  border-top: .84375em solid transparent;
+  margin: 0 8px 20px 8px;
+  position: relative;
+}
+
+app-input .pok-input-component-container input {
+  font: inherit;
+  background: 0 0;
+  color: currentColor;
+  border: none;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+app-input .pok-field-container {
+  padding: 10px 0px;
+}
+
+app-input .pok-placeholder {
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  text-align: left;
+}
+
+app-input .pok-placeholder label {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  font-weight: normal;
+  transition: transform .4s cubic-bezier(.25,.8,.25,1), color .4s cubic-bezier(.25,.8,.25,1), width .4s cubic-bezier(.25,.8,.25,1);
+  max-width: none;
+  transform-origin: 0 0;
+  color: #333;
+}
+
+app-input.pok-input-focused .pok-placeholder label, app-input:not(.pok-input-empty) .pok-placeholder label  {
+  width: 133.333%;
+  transform: translateY(-1.28125em) scale(.75) perspective(100px) translateZ(.001px);
+  transform-origin: 0 0;
+}
+
+app-input.pok-input-focused .pok-placeholder label {
+  color: #EF5350;
+}
+
+app-input .pok-underline {
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background-color: rgba(0,0,0,.42);
+  bottom: 1px;
+}
+
+app-input .pok-underline-animate {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  transform-origin: 50%;
+  transform: scaleX(.5);
+  visibility: hidden;
+  background-color: transparent;
+  transition: background-color 50ms cubic-bezier(.55,0,.55,.2);
+}
+
+app-input.pok-input-focused .pok-underline-animate {
+  visibility: visible;
+  background-color: #EF5350;
+  transform: scaleX(1);
+  transition: transform 150ms linear, background-color 50ms cubic-bezier(.55,0,.55,.2);
+}

@@ -6,6 +6,9 @@ import {PokemonCardComponent} from './pokemon-card/pokemon-card.component';
 import {PokemonListComponent} from './pokemon-list/pokemon-list.component';
 import {Route, RouterModule} from '@angular/router';
 import {URIS} from "./shared/uris";
+import {InputComponent} from './input/input.component';
+import {InputDirective} from './input/input.directive';
+import {FormsModule} from "@angular/forms";
 
 export const routes: Route[] = [
   { path: '', redirectTo: URIS.POKEMON_LIST, pathMatch: 'full'},
@@ -18,10 +21,13 @@ export const routes: Route[] = [
     AppComponent,
     PokemonDetailComponent,
     PokemonCardComponent,
-    PokemonListComponent
+    PokemonListComponent,
+    InputComponent,
+    InputDirective
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],
