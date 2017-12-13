@@ -54,8 +54,26 @@ describe('pokemonstore-ui App', () => {
     AppPage.saveScreenShot();
   });
 
-  it('should route back to pokemon list after clicking on Back button', () => {
-    page.clickOnBackButton();
+  it('should route back to pokemon list after clicking modal cross', () => {
+    page.clickOnModalCross();
+    expect(browser.getCurrentUrl()).toBe(browser.baseUrl + AppPage.getListLink());
+    AppPage.saveScreenShot();
+  });
+
+  it('should route back to pokemon list after clicking modal background', () => {
+    page.clickOnPokemonCard(randomIndex);
+    expect(browser.getCurrentUrl()).toBe(browser.baseUrl + AppPage.getDetailLink(randomPokemon.id));
+
+    page.clickOnModalBackground();
+    expect(browser.getCurrentUrl()).toBe(browser.baseUrl + AppPage.getListLink());
+    AppPage.saveScreenShot();
+  });
+
+  it('should route back to pokemon list after typing escape', () => {
+    page.clickOnPokemonCard(randomIndex);
+    expect(browser.getCurrentUrl()).toBe(browser.baseUrl + AppPage.getDetailLink(randomPokemon.id));
+
+    browser.actions().sendKeys(protractor.Key.ESCAPE).perform();
     expect(browser.getCurrentUrl()).toBe(browser.baseUrl + AppPage.getListLink());
     AppPage.saveScreenShot();
   });

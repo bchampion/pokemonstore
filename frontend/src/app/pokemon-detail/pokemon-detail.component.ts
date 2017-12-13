@@ -11,7 +11,7 @@ import {UrisUtils} from '../shared/utils/uris-utils';
 })
 export class PokemonDetailComponent implements OnInit {
 
-  pokemon: Pokemon = pokemonData[0];
+  pokemon: Pokemon;
 
   index: number;
 
@@ -24,10 +24,8 @@ export class PokemonDetailComponent implements OnInit {
   }
 
   private handleParams(id: number) {
-    if (id) {
-      this.index = pokemonData.findIndex(pokemon => pokemon.id === id);
-      this.pokemon = pokemonData[this.index];
-    }
+    this.index = pokemonData.findIndex(pokemon => pokemon.id === id);
+    this.pokemon = pokemonData[this.index];
   }
 
   previous() {
@@ -37,6 +35,7 @@ export class PokemonDetailComponent implements OnInit {
   }
 
   next() {
+    console.log(this.index);
     let nextIndex = this.index + 1;
     if (nextIndex > pokemonData.length - 1) {
       nextIndex = 0;

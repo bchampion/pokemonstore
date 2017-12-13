@@ -16,7 +16,7 @@ export class AppPage {
   }
 
   static getDetailLink(id: number): string {
-    return '/' + URIS.POKEMON_DETAIL.replace(':id', String(id));
+    return '/' + URIS.POKEMON_LIST + '/' + URIS.POKEMON_DETAIL.replace(':id', String(id));
   }
 
   static iterateIndex(index: number): number {
@@ -70,8 +70,12 @@ export class AppPage {
     return pokemonDetail.element(by.css('h1')).getText();
   }
 
-  clickOnBackButton() {
-    element(by.css('button.return-button')).click();
+  clickOnModalCross() {
+    element(by.css('button.pok-modal__btn')).click();
+  }
+
+  clickOnModalBackground() {
+    element(by.css('div.pok-modal-background')).click();
   }
 
   typeOnInputField(text: string) {
