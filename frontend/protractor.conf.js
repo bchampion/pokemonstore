@@ -17,12 +17,38 @@ exports.config = {
   jasmineNodeOpts: {
     showColors: true,
     defaultTimeoutInterval: 30000,
-    print: function() {}
+    print: function () {
+    }
   },
   onPrepare() {
     require('ts-node').register({
       project: 'e2e/tsconfig.e2e.json'
     });
-    jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
+    jasmine.getEnv().addReporter(new SpecReporter({
+      suite: {
+        displayNumber: true
+      },
+      spec: {
+        displayErrorMessages: false,
+        displayStacktrace: false,
+        displaySuccessful: true,
+        displayFailed: true,
+        displayPending: true,
+        displayDuration: false,
+      },
+      summary: {
+        displayErrorMessages: true,
+        displayStacktrace: false,
+        displaySuccessful: false,
+        displayFailed: true,
+        displayPending: false,
+        displayDuration: true,
+      },
+      prefixes: {
+        successful: '✔ ',
+        failed: '✘ ',
+        pending: '☀ ',
+      }
+    }));
   }
 };
