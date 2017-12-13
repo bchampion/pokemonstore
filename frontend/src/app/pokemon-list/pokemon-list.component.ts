@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../shared/pokemon';
+import {pokemonData} from '../data/data';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -8,7 +9,7 @@ import { Pokemon } from '../shared/pokemon';
 })
 export class PokemonListComponent implements OnInit {
 
-  pokemons: Pokemon[];
+  pokemons: Pokemon[] = pokemonData;
 
   constructor() { }
 

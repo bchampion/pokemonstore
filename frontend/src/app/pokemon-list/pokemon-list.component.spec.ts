@@ -18,7 +18,7 @@ describe('PokemonListComponent', () => {
         PokemonCardComponent
       ]
     })
-      .compileComponents();
+    .compileComponents();
   }));
 
   beforeEach(() => {
@@ -64,6 +64,7 @@ describe('PokemonListComponent', () => {
         .toContain('sprite-' + randomPokemon.id, 'Wrong image is displayed');
       expect(randomCard.querySelector('div').innerText)
         .toBe(`${randomPokemon.name} #${randomPokemon.id}`, 'Name and id are not displayed well');
+
     }
   });
 
