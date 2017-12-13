@@ -56,7 +56,7 @@ describe('PokemonDetailComponent', () => {
     expect(element.querySelector('h1').innerText)
       .toBe(new TitleCasePipe().transform(pokemon.name) + ' #' + pokemon.id);
   });
-  it( 'should display random pokemon height and weight', () => {
+  it( 'should display random pokemon height anw weight', () => {
     pokemon = changePokemon(component, fixture);
     expect(element.querySelector('.height-and-weight').innerText)
       .toBe(`Height: ${pokemon.height / 10} m Weight: ${pokemon.weight / 10} kg`);
