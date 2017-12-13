@@ -1,0 +1,48 @@
+header {
+  background-color: #EF5350;
+  color: white;
+  padding: 4px 4px 0px 4px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+}
+
+.logo {
+  font-size: 1.2em;
+  padding: 12px;
+  float: left;
+  color: white;
+  text-decoration: none;
+}
+
+.btn--clear {
+  color: white;
+  float: left;
+  padding: 6px 0 0 0;
+  min-width: 54px;
+
+}
+
+.btn--clear img {
+  width: 34px;
+}
+
+
+main {
+  padding: 74px 16px 42px 16px;
+   min-height: 93vh;
+}
+
+footer {
+  background-color: #EF5350;
+  color: white;
+  padding: 16px;
+  font-size: 14px;
+}
+
+a {
+  color: white;
+}

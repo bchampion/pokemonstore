@@ -1,0 +1,27 @@
+body {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 16px;
+  background-color: #ededed !important;
+}
+
+p {
+  margin-bottom: 12px !important;
+  margin-top: 12px !important;
+}
+
+a {
+  color: #EF5350;
+}
+
+h1 {
+  font-weight: 600 !important;
+}
+
+.row {
+  padding: 0 8px;
+}
+
+.float-right {
+  float: right;
+}
+
