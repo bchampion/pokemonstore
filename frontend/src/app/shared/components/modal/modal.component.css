@@ -19,7 +19,7 @@
 .pok-modal {
   position: fixed;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   top: 0;
   bottom: 0;
@@ -30,7 +30,6 @@
 }
 
 .pok-modal__inner {
-  min-height: 110vh;
   width: 100%;
   max-width: 720px;
   margin: 0 auto;
@@ -40,11 +39,16 @@
   overflow: visible;
 }
 
+@media (max-width: 720px) {
+  .pok-modal__inner {
+    min-height: 110vh;
+  }
+}
+
 @media (min-width: 720px) {
   .pok-modal__inner {
     width: 92%;
     margin: 30px auto;
-    min-height: initial;
   }
 }
 

@@ -5,6 +5,7 @@ import {TitleCasePipe} from "@angular/common";
 import {RouterTestingModule} from "@angular/router/testing";
 import {UrisUtils} from "../../shared/utils/uris-utils";
 import {ModalComponent} from "../../shared/components/modal/modal.component";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import Spy = jasmine.Spy;
 
 describe('PokemonDetailComponent', () => {
@@ -19,7 +20,10 @@ describe('PokemonDetailComponent', () => {
         PokemonDetailComponent,
         ModalComponent
       ],
-      imports: [ RouterTestingModule ]
+      imports: [
+        RouterTestingModule,
+        BrowserAnimationsModule
+      ]
     })
       .compileComponents();
   }));

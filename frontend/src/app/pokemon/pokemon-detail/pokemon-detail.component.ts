@@ -3,11 +3,17 @@ import {Pokemon} from '../../shared/pokemon';
 import {pokemonData} from '../../shared/data/data';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UrisUtils} from '../../shared/utils/uris-utils';
+import {trigger} from "@angular/animations";
+import {ModalAnimation} from "../../shared/components/modal/modal-animation";
 
 @Component({
   selector: 'app-pokemon-detail',
   templateUrl: './pokemon-detail.component.html',
-  styleUrls: ['./pokemon-detail.component.css']
+  styleUrls: ['./pokemon-detail.component.css'],
+  host: {'[@modal]': ''},
+  animations: [
+    trigger('modal', ModalAnimation.fadeInOut)
+  ]
 })
 export class PokemonDetailComponent implements OnInit {
 
