@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ModalComponent} from './modal.component';
-import {KeyCodes} from "../key-codes";
+import {KeyCodes} from "../../key-codes";
 
 describe('ModalComponent', () => {
   let component: ModalComponent;

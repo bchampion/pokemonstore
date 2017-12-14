@@ -1,10 +1,10 @@
 import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
-import {KeyCodes} from '../key-codes';
+import {KeyCodes} from '../../key-codes';
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.css']
+  styleUrls: ['./modal.component.css'],
 })
 export class ModalComponent implements OnInit {
 

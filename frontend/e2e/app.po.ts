@@ -2,7 +2,7 @@ import {browser, by, element, ElementFinder} from 'protractor';
 import {promise} from 'selenium-webdriver';
 import 'rxjs/add/operator/map';
 import {URIS} from '../src/app/shared/uris';
-import {pokemonData} from '../src/app/data/data';
+import {pokemonData} from '../src/app/shared/data/data';
 import Promise = promise.Promise;
 
 let fs = require('fs');

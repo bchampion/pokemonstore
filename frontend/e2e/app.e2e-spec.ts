@@ -1,5 +1,5 @@
 import {AppPage} from './app.po';
-import {pokemonData} from '../src/app/data/data';
+import {pokemonData} from '../src/app/shared/data/data';
 import {TitleCasePipe} from '@angular/common';
 import {browser, protractor} from 'protractor';
 

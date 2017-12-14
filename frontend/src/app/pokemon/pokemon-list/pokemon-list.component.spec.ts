@@ -1,12 +1,12 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {PokemonListComponent} from './pokemon-list.component';
 import {PokemonCardComponent} from '../pokemon-card/pokemon-card.component';
-import {pokemonData} from '../data/data';
-import {Pokemon} from '../shared/pokemon';
+import {pokemonData} from '../../shared/data/data';
+import {Pokemon} from '../../shared/pokemon';
 import {RouterTestingModule} from '@angular/router/testing';
-import {InputComponent} from "../input/input.component";
+import {InputComponent} from "../../shared/components/input/input.component";
 import {FormsModule} from "@angular/forms";
-import {InputDirective} from "../input/input.directive";
+import {InputDirective} from "../../shared/components/input/input.directive";
 
 describe('PokemonListComponent', () => {
   let component: PokemonListComponent;

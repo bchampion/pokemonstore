@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Pokemon} from '../shared/pokemon';
-import {UrisUtils} from "../shared/utils/uris-utils";
+import {Pokemon} from '../../shared/pokemon';
+import {UrisUtils} from "../../shared/utils/uris-utils";
 
 @Component({
   selector: 'app-pokemon-card',

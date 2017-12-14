@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Pokemon} from '../shared/pokemon';
-import {pokemonData} from '../data/data';
+import {Pokemon} from '../../shared/pokemon';
+import {pokemonData} from '../../shared/data/data';
 
 @Component({
   selector: 'app-pokemon-list',

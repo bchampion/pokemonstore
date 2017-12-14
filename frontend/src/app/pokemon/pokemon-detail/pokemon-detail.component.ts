@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Pokemon} from '../shared/pokemon';
-import {pokemonData} from '../data/data';
+import {Pokemon} from '../../shared/pokemon';
+import {pokemonData} from '../../shared/data/data';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UrisUtils} from '../shared/utils/uris-utils';
+import {UrisUtils} from '../../shared/utils/uris-utils';
 
 @Component({
   selector: 'app-pokemon-detail',

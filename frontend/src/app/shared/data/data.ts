@@ -1,4 +1,4 @@
-import {Pokemon} from '../shared/pokemon';
+import {Pokemon} from '../pokemon';
 
 export const pokemonData: Pokemon[] = [
   { id: 1, name: 'bulbasaur', types: ['grass', 'poison'], height: 7, weight: 69, description: 'For some time after its birth, it grows by gaining nourishment from the seed on its back.' },
